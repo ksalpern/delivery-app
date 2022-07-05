@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: "delivery-app-a0a7f",
   storageBucket: "delivery-app-a0a7f.appspot.com",
   messagingSenderId: "743878516859",
-  appId: "1:743878516859:web:0c9ea60342507e9ce0c2de"
+  appId: "1:743878516859:web:0c9ea60342507e9ce0c2de",
 };
 
 const app = getApps.length > 0 ? getApp() : initializeApp(firebaseConfig);

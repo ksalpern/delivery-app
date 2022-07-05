@@ -6,14 +6,19 @@ import {Link} from  'react-router-dom';
 import avatar from '../img/avatar.png';
 import logo from '../img/reserved/RESERVED_logo.svg.png';
 
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { app } from '../../firebase.config';
 
 
 
 function Header() {
 
-const login = () => {
+const firebaseAuth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
+const login = async () => {
+const responce = await signInWithPopup(firebaseAuth, provider);
+console.log(responce);
 }
 
   return (
