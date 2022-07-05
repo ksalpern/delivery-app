@@ -23,7 +23,7 @@ cards.productComponent.card.map(c =>
     <Card.Text>
      {c.price}
     </Card.Text>
-    <Button variant="dark">Buy product now</Button>
+    <Button variant="dark">Buy now</Button>
   </Card.Body>
   </Card>
   )
