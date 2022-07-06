@@ -11,7 +11,7 @@ import logo from '../img/reserved/RESERVED_logo.svg.png';
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { app } from '../../firebase.config';
-import localStorage from 'redux-persist/es/storage';
+//import localStorage from 'redux-persist/es/storage';
 
 
 
