@@ -16,7 +16,7 @@ function CardComponent() {
 }
 let productElements =
 cards.productComponent.card.map(c => 
-  <Card style={{ width: '346px', 'margin-bottom': '30px' }}>
+  <Card style={{ width: '346px', marginBottom: '30px' }}>
   <Card.Img variant="top" src={c.photo} />
   <Card.Body>
     <Card.Title>{c.name}</Card.Title>
@@ -29,7 +29,7 @@ cards.productComponent.card.map(c =>
   )
 
   return (
-  <div style={{  display: 'flex', 'flex-wrap':'wrap', 'justify-content': 'space-between', padding: '100px', margin: '0 auto'}}>
+  <div style={{  display: 'flex', flexWrap:'wrap', justifyContent: 'space-between', padding: '100px', margin: '0 auto'}}>
   { productElements }
   </div>
   )
