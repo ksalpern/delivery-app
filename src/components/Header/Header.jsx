@@ -55,7 +55,7 @@ const logout = () => {
     <AnimatePresence>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container>
-   
+   {/* LOGO goes to homepage */}
     <Link to="/">
       <img src={logo} alt='logo' style={{ width: '110px'}} />
     </Link>
@@ -67,17 +67,15 @@ const logout = () => {
           <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
         </NavDropdown>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    <Navbar.Collapse id="responsive-navbar-nav">
-      <Nav>
-        <Nav.Link href="#shoppingCart">
-          <MdShoppingBasket/>
-        </Nav.Link>
+    <Navbar.Collapse id="responsive-navbar-nav" style={{ display: 'flex', 'justify-content': 'flex-end'}} >
+      <Nav >
         <Nav.Link eventKey={2} href="#customer">
+          {/* LOGIN */}
          <motion.img  whileTap={{scale: 0.6}}
          src={user ? user.photoURL : avatar} alt='avatar' style={{ width: '30px'}}
          onClick={login} />
         </Nav.Link>
-     
+     {/* LOGOUT AND ADD NEW ITEM */}
 {
   isMenu && (
     <NavDropdown title="" id="collasible-nav-dropdown" bg="light" variant="light">
@@ -94,6 +92,12 @@ const logout = () => {
      </NavDropdown>
   )
 }
+
+{/* BASKET */}
+<Nav.Link href="/shoppingCart">
+          <MdShoppingBasket/>
+        </Nav.Link>
+
 
       </Nav>
     </Navbar.Collapse>
