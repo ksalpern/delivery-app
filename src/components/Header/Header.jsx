@@ -3,11 +3,15 @@ import { Navbar, Nav,  NavDropdown, Container } from 'react-bootstrap';
 import {MdShoppingBasket} from 'react-icons/md';
 import { AnimatePresence, motion } from 'framer-motion';
 import {Link} from  'react-router-dom';
+import { useStateValue } from '../../context/StateProvider';
+import { actionType } from '../../context/reducer';
+
 import avatar from '../img/avatar.png';
 import logo from '../img/reserved/RESERVED_logo.svg.png';
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { app } from '../../firebase.config';
+import localStorage from 'redux-persist/es/storage';
 
 
 
@@ -16,10 +20,18 @@ function Header() {
 const firebaseAuth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
+const [{ user }, dispatch] = useStateValue();
+
 const login = async () => {
-const responce = await signInWithPopup(firebaseAuth, provider);
-console.log(responce);
-}
+  const {
+user: { refreshToken, providerData },
+ } = await signInWithPopup(firebaseAuth, provider);
+ dispatch({
+  type: actionType.SET_USER,
+  user: providerData[0],
+ });
+ localStorage.setItem('user', JSON.stringify(providerData[0])); //pushes user's data to local store
+};
 
   return (
     <AnimatePresence>
@@ -44,7 +56,7 @@ console.log(responce);
         </Nav.Link>
         <Nav.Link eventKey={2} href="#customer">
          <motion.img  whileTap={{scale: 0.6}}
-         src={avatar} alt='avatar' style={{ width: '30px'}}
+         src={user ? user.photoURL : avatar} alt='avatar' style={{ width: '30px'}}
          onClick={login} />
         </Nav.Link>
       </Nav>
