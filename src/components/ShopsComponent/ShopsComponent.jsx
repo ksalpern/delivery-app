@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Button, Nav } from 'react-bootstrap';
 
 function ShopsComponent() {
+  
   return (
     <Card>
   <Card.Header>

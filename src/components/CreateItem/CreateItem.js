@@ -92,7 +92,7 @@ function CreateItem() {
       });
   };
 
-  const saveDetails = () => { 
+  const saveDetails = () => {
     setIsLoading(true);
     try {
       if ((!title && !price && !imageAsset, !shop)) {
@@ -140,7 +140,7 @@ function CreateItem() {
 
   return (
     <div style={{ padding: '100px', width: '100%' }}>
-      <div style={{ display: 'flex', 'flex-direction': 'column', 'justify-content': 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {
           fields && (
             <p style={{ 'background-color': 'red' }}>
@@ -160,7 +160,7 @@ function CreateItem() {
           />
         </div>
         {/* SELECT SHOP */}
-        <div style={{ margin: '0 auto' }}>
+        <div>
           <select
             onChange={(e) => setShop(e.target.value)}
           >
@@ -178,7 +178,7 @@ function CreateItem() {
           </select>
         </div>
         {/* UPLOAD Product Photo */}
-        <div style={{ margin: '0 auto' }} >
+        <div>
           {isLoading ? (
             <Loader />
           ) : (
@@ -217,20 +217,9 @@ function CreateItem() {
           )}
         </div>
 
-        {/* ADD CALLORIES AND PRICE INPUTS */}
-        <div style={{ margin: '0 auto' }}>
-          {/* <div>
-            <MdFoodBank />
-            <input
-              type="text"
-              required
-              placeholder="Give me calories..."
-              value={calories}
-              onChange={(e) => setCalories(e.target.value)}
-            />
-          </div> */}
-
-          <div  >
+        {/* ADD PRICE INPUT */}
+        <div>
+          <div>
             <MdAttachMoney />
             <input
               type="text"
@@ -243,7 +232,7 @@ function CreateItem() {
         </div>
 
         {/* SAVE BUTTON */}
-        <div style={{ margin: '0 auto' }}>
+        <div>
           <Button
             variant="dark"
             onClick={saveDetails}>
