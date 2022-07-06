@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Nav,  NavDropdown, Container } from 'react-bootstrap';
-import {MdShoppingBasket} from 'react-icons/md';
+import {MdShoppingBasket, MdAdd, MdLogout} from 'react-icons/md';
 import { AnimatePresence, motion } from 'framer-motion';
 import {Link} from  'react-router-dom';
 import { useStateValue } from '../../context/StateProvider';
@@ -23,14 +23,16 @@ const provider = new GoogleAuthProvider();
 const [{ user }, dispatch] = useStateValue();
 
 const login = async () => {
+ if(!user) {
   const {
-user: { refreshToken, providerData },
- } = await signInWithPopup(firebaseAuth, provider);
- dispatch({
-  type: actionType.SET_USER,
-  user: providerData[0],
- });
- localStorage.setItem('user', JSON.stringify(providerData[0])); //pushes user's data to local store
+    user: { refreshToken, providerData },
+     } = await signInWithPopup(firebaseAuth, provider);
+     dispatch({
+      type: actionType.SET_USER,
+      user: providerData[0],
+     });
+     localStorage.setItem('user', JSON.stringify(providerData[0])); //pushes user's data to local store    
+ }
 };
 
   return (
@@ -59,6 +61,16 @@ user: { refreshToken, providerData },
          src={user ? user.photoURL : avatar} alt='avatar' style={{ width: '30px'}}
          onClick={login} />
         </Nav.Link>
+        <NavDropdown title="" id="collasible-nav-dropdown" bg="light" variant="light">
+        {
+        user && user.email === 'ksiushapodoprigora@gmail.com' && (
+         <Link to={'/createItem'}>
+          <NavDropdown.Item href="/createItem">New Item <MdAdd/></NavDropdown.Item>
+          </Link>
+        )
+        }
+          <NavDropdown.Item href="#action/3.2">Logout <MdLogout/></NavDropdown.Item>
+         </NavDropdown>
       </Nav>
     </Navbar.Collapse>
     </Container>
