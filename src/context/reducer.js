@@ -1,19 +1,26 @@
 export const actionType = {
-  SET_USER : 'SET_USER'
+  SET_USER: 'SET_USER',
+  SET_PRODUCT_ITEMS: 'SET_PRODUCT_ITEMS',
 }
 
 const reducer = (state, action) => {
   console.log(action);
 
-  switch(action.type){
+  switch (action.type) {
     case actionType.SET_USER:
       return {
         ...state,
         user: action.user,
       };
 
-      default:
-        return state;
+    case actionType.SET_PRODUCT_ITEMS:
+      return {
+        ...state,
+        productItems: action.productItems,
+      };
+
+    default:
+      return state;
   }
 };
 
