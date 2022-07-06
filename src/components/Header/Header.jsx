@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar, Nav,  NavDropdown, Container } from 'react-bootstrap';
 import {MdShoppingBasket, MdAdd, MdLogout} from 'react-icons/md';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -22,6 +22,8 @@ const provider = new GoogleAuthProvider();
 
 const [{ user }, dispatch] = useStateValue();
 
+const [isMenu, setIsMenu] = useState(false);
+
 const login = async () => {
  if(!user) {
   const {
@@ -32,6 +34,8 @@ const login = async () => {
       user: providerData[0],
      });
      localStorage.setItem('user', JSON.stringify(providerData[0])); //pushes user's data to local store    
+ } else {
+  setIsMenu(!isMenu)
  }
 };
 
@@ -61,16 +65,22 @@ const login = async () => {
          src={user ? user.photoURL : avatar} alt='avatar' style={{ width: '30px'}}
          onClick={login} />
         </Nav.Link>
-        <NavDropdown title="" id="collasible-nav-dropdown" bg="light" variant="light">
-        {
-        user && user.email === 'ksiushapodoprigora@gmail.com' && (
-         <Link to={'/createItem'}>
-          <NavDropdown.Item href="/createItem">New Item <MdAdd/></NavDropdown.Item>
-          </Link>
-        )
-        }
-          <NavDropdown.Item href="#action/3.2">Logout <MdLogout/></NavDropdown.Item>
-         </NavDropdown>
+     
+{
+  isMenu && (
+    <NavDropdown title="" id="collasible-nav-dropdown" bg="light" variant="light">
+    {
+    user && user.email === 'ksiushapodoprigora@gmail.com' && (
+     <Link to={'/createItem'}>
+      <NavDropdown.Item href="/createItem">New Item <MdAdd/></NavDropdown.Item>
+      </Link>
+    )
+    }
+      <NavDropdown.Item href="#action/3.2">Logout <MdLogout/></NavDropdown.Item>
+     </NavDropdown>
+  )
+}
+
       </Nav>
     </Navbar.Collapse>
     </Container>
