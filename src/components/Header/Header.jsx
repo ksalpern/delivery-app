@@ -24,6 +24,7 @@ const [{ user }, dispatch] = useStateValue();
 
 const [isMenu, setIsMenu] = useState(false);
 
+//LOGIN
 const login = async () => {
  if(!user) {
   const {
@@ -37,6 +38,17 @@ const login = async () => {
  } else {
   setIsMenu(!isMenu)
  }
+};
+
+//LOGOUT
+const logout = () => {
+  setIsMenu(false);
+  localStorage.clear();
+
+  dispatch({
+    type: actionType.SET_USER,
+    user: null,
+  });
 };
 
   return (
@@ -76,7 +88,9 @@ const login = async () => {
       </Link>
     )
     }
-      <NavDropdown.Item href="#action/3.2">Logout <MdLogout/></NavDropdown.Item>
+      <NavDropdown.Item 
+      onClick={logout}
+      href="#action/3.2">Logout <MdLogout/></NavDropdown.Item>
      </NavDropdown>
   )
 }
