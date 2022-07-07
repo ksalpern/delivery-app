@@ -25,7 +25,7 @@ function ShopsComponent() {
         </NavDropdown.Item>
    ))}
    </NavDropdown>
-   <CardComponent data={productItems?.filter(n => n.shop == filter)}/>
+   <CardComponent data={productItems?.filter(n => n.shop === filter)}/>
    </>
   )
 }

@@ -14,6 +14,7 @@ import { useStateValue } from './context/StateProvider';
 import { getAllProductItems } from './utils/firebaseFunctions';
 import { useEffect } from 'react';
 import { actionType } from './context/reducer';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 
 function App(store) {
@@ -38,11 +39,10 @@ function App(store) {
     <Router>
       <Header />
       <Routes>
-        <Route path='/' element={<Products store={store} />} />
+        <Route path='/' element={<ShopsComponent store={store} />} />
         <Route path='/createItem' element={<CreateItem />} />
+        <Route path='/shoppingCart' element={<ShoppingCart />} />
       </Routes>
-
-      <ShopsComponent />
     </Router>
   );
 }
