@@ -1,45 +1,33 @@
-import React, { useState } from 'react';
-import { Card, Button, Nav } from 'react-bootstrap';
-import { shops } from '../api/store'
+import React, { useState, useEffect } from 'react';
+import { NavDropdown } from 'react-bootstrap';
+import { useStateValue } from '../../context/StateProvider';
+import { shops } from '../api/store';
+import CardComponent from '../CardComponent/CardComponent';
 
 function ShopsComponent() {
   const [filter, setFilter] = useState('Reserved');
+
+ // useEffect(() => {}, [filter]);
+ const [{ productItems }, dispatch] = useStateValue();
+
   return (
-   {shops && shops.map(shop => (
-    <NavDropdown title=">" id="collasible-nav-dropdown" bg="light" variant="light">
-    <NavDropdown.Item href="#action/3.1">Bershka</NavDropdown.Item>
-    <NavDropdown.Item href="#action/3.2">Oodji</NavDropdown.Item>
-    <NavDropdown.Item href="#action/3.3">H&M</NavDropdown.Item>
-    <NavDropdown.Divider />
-    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-  </NavDropdown>
+    <>
+    <NavDropdown title="CHOOSE A SHOP" id="collasible-nav-dropdown" bg="light" variant="light">
+   {shops &&
+     shops.map(shop => (
+        <NavDropdown.Item
+         key={shop.id} 
+         href="#action/3.1"
+        onClick={() => setFilter(shop.urlParamName)}
+        // `${filter === shop.urlParamName }`
+        >
+          {shop.name}
+        </NavDropdown.Item>
    ))}
+   </NavDropdown>
+   <CardComponent data={productItems?.filter(n => n.shop == filter)}/>
+   </>
   )
 }
 
-{/* <Card>
-<Card.Header>
-  <Nav variant="tabs" defaultActiveKey="#first">
-    <Nav.Item>
-      <Nav.Link href="#first">Active</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link href="#link">Link</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link href="#disabled" disabled>
-        Disabled
-      </Nav.Link>
-    </Nav.Item>
-  </Nav>
-</Card.Header>
-<Card.Body>
-  <Card.Title>Special title treatment</Card.Title>
-  <Card.Text>
-    With supporting text below as a natural lead-in to additional content.
-  </Card.Text>
-  <Button variant="primary">Go somewhere</Button>
-</Card.Body>
-</Card> */}
-
-export default ShopsComponent
+export default ShopsComponent;
