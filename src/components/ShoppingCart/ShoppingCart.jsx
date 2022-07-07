@@ -1,9 +1,13 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useStateValue } from '../../context/StateProvider';
 import ChosenProducts from './ChosenProducts';
 
 
 function ShoppingCart() {
+
+  const [{ cartItems, user }, dispatch] = useStateValue();
+
   return (
     <Form >
       <div style={{ display: 'flex', padding: '100px', justifyContent: 'space-around', gap: '30px', flexWrap: 'wrap' }}>
@@ -26,16 +30,28 @@ function ShoppingCart() {
 
         </div>
         <div>
-          <ChosenProducts />
+          {/* choosen products*/}
+{cartItems && 
+cartItems.map((item) => (
+  <ChosenProducts key={item.id} item={item}/> 
+))}
 
         </div>
       </div>
-      
-      <div className="d-grid gap-2" >
+    {user ? (
+        <div className="d-grid gap-2" >
         <Button  size="lg" variant="dark" type="submit">
           Submit
         </Button>
       </div>
+    ) : (
+      <div className="d-grid gap-2" >
+      <Button  size="lg" variant="dark" type="submit">
+        Login to submit
+      </Button>
+    </div>
+    )}  
+    
     </Form>
   )
 }

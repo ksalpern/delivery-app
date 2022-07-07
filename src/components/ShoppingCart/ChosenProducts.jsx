@@ -1,29 +1,38 @@
 import React from 'react';
 import { Card, Spinner, Button } from 'react-bootstrap';
 
-function ChosenProducts() {
+function ChosenProducts({item}) {
+
   return (
     <div>
-      <Card border="dark" style={{ width: '18rem' }}>
-        <div > 
-        <Card.Img  variant="top"
-          src={"https://firebasestorage.googleapis.com/v0/b/delivery-app-a0a7f.appspot.com/o/Images%2F1657129609431-pants9.jpg?alt=media&token=46d5738c-ac68-4f14-a481-ddf046e5e1b8"}
-        />
-        </div>
-        <Card.Body>
-          <Card.Title>Pants</Card.Title>
-          <Card.Text>$ 79</Card.Text>
-        </Card.Body>
-        <Card.Footer style={{display:' flex', justifyContent: 'flex-end', gap: '10px'}}>
-        <Button variant="dark" type="submit">
-            -
-          </Button>
-          <span style={{fontSize: '16px'}}> 1 </span>
-          <Button variant="dark" type="submit">
-            +
-          </Button>
-        </Card.Footer>
-      </Card>
+     {item && item > 0 ? (
+       <Card border="dark" style={{ width: '18rem' }}>
+       <div > 
+       <Card.Img  variant="top"
+         src={item.imageURL}
+       />
+       </div>
+       <Card.Body>
+         <Card.Title>{item.title}</Card.Title>
+         <Card.Text>${item.price}</Card.Text>
+       </Card.Body>
+       <Card.Footer style={{display:' flex', justifyContent: 'flex-end', gap: '10px'}}>
+       <Button variant="dark" type="submit">
+           -
+         </Button>
+         <span>{item.qty}</span>
+         <Button variant="dark" type="submit">
+           +
+         </Button>
+       </Card.Footer>
+     </Card>
+     ) : (
+      <Card border="dark" style={{ width: '18rem' }}>   
+      <Card.Img  variant="top"
+        src={'https://cdn.dribbble.com/users/844846/screenshots/2981974/empty_cart_800x600_dribbble.png'}
+      />
+    </Card>
+     )}
     </div>
   )
 }

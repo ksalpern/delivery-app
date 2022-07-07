@@ -21,7 +21,7 @@ function Header() {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, cartItems }, dispatch] = useStateValue();
 
   const [isMenu, setIsMenu] = useState(false);
 
@@ -64,7 +64,7 @@ function Header() {
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" style={{ display: 'flex', 'justify-content': 'flex-end' }} >
-          
+
             <Nav >
               {/* LOGIN */}
               <Nav.Link eventKey={2} href="#customer">
@@ -91,10 +91,15 @@ function Header() {
               }
 
               {/* BASKET */}
-              <Link to={'/shoppingCart'} style={{color: 'white'}}  >
+              <Link to={'/shoppingCart'} style={{ color: 'white' }}  >
                 <MdShoppingBasket />
               </Link>
-              
+              {cartItems && cartItems.length > 0 && (
+              <div >
+                <p style={{backgroundColor: 'white'}}>{cartItems.length}</p>
+              </div>
+            )}
+<p style={{backgroundColor: 'white'}}>heythere</p>
             </Nav>
           </Navbar.Collapse>
         </Container>
