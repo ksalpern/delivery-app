@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/delivery-app-deployed/static/css/main.716ce751.css",
+    "main.js": "/delivery-app-deployed/static/js/main.c8ccfb46.js",
+    "static/media/avatar.png": "/delivery-app-deployed/static/media/avatar.72ef8f65649777532692.png",
+    "static/media/RESERVED_logo.svg.png": "/delivery-app-deployed/static/media/RESERVED_logo.svg.638e3fe42b25643ad739.png",
+    "index.html": "/delivery-app-deployed/index.html",
+    "main.716ce751.css.map": "/delivery-app-deployed/static/css/main.716ce751.css.map",
+    "main.c8ccfb46.js.map": "/delivery-app-deployed/static/js/main.c8ccfb46.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.716ce751.css",
+    "static/js/main.c8ccfb46.js"
+  ]
+}
