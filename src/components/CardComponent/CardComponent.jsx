@@ -23,7 +23,7 @@ useEffect(() => {
 }, [items]);
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', padding: '100px', margin: '0 auto' }}>
+    <div style={{  display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', padding: '100px'}}>
       {data ?
         data.map((item) => (
           <Card key={item?.id} style={{ width: '346px', marginBottom: '30px' }}>

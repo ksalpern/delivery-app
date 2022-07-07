@@ -23,13 +23,13 @@ export const card = [
 export const shops = [
   {
     id: 1,
-    name: "Reserved",
-    urlParamName: "Reserved",
+    name: "IcecreamMC",
+    urlParamName: "IcecreamMC",
   },
   {
     id: 2,
-    name: "Oodji",
-    urlParamName: "Oodji",
+    name: "PizzaMaster",
+    urlParamName: "PizzaMaster",
   },
   {
     id: 3,
@@ -38,12 +38,12 @@ export const shops = [
   },
   {
     id: 4,
-    name: "Bershka",
-    urlParamName: "Bershka",
+    name: "Fresh",
+    urlParamName: "Fresh",
   },
   {
     id: 5,
-    name: "Nike",
-    urlParamName: "Nike",
+    name: "Nice",
+    urlParamName: "Nice",
   },
 ];

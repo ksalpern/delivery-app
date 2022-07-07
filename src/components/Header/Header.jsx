@@ -96,10 +96,9 @@ function Header() {
               </Link>
               {cartItems && cartItems.length > 0 && (
               <div >
-                <p style={{backgroundColor: 'white'}}>{cartItems.length}</p>
+                <p style={{backgroundColor: 'white', borderRadius: '50px'}}>{cartItems.length}</p>
               </div>
             )}
-<p style={{backgroundColor: 'white'}}>heythere</p>
             </Nav>
           </Navbar.Collapse>
         </Container>

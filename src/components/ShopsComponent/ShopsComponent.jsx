@@ -5,7 +5,7 @@ import { shops } from '../api/store';
 import CardComponent from '../CardComponent/CardComponent';
 
 function ShopsComponent() {
-  const [filter, setFilter] = useState('Reserved');
+  const [filter, setFilter] = useState('IcecreamMC');
 
  // useEffect(() => {}, [filter]);
  const [{ productItems }, dispatch] = useStateValue();
