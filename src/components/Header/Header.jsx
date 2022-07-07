@@ -7,7 +7,7 @@ import { useStateValue } from '../../context/StateProvider';
 import { actionType } from '../../context/reducer';
 
 import avatar from '../img/avatar.png';
-import logo from '../img/reserved/RESERVED_logo.svg.png';
+import logo from '../img/IcecreamMC/RESERVED_logo.svg.png';
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { app } from '../../firebase.config';
